@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieDBminiproj", "movieDBminiproj\movieDBminiproj.csproj", "{BA1AFA16-5B13-4B97-9250-5D702FE34C59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "movieDBminiproj.Tests", "movieDBminiproj.Tests\movieDBminiproj.Tests.csproj", "{A4F87F66-A655-4EBB-BBE5-9407D8C086FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA1AFA16-5B13-4B97-9250-5D702FE34C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1AFA16-5B13-4B97-9250-5D702FE34C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1AFA16-5B13-4B97-9250-5D702FE34C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1AFA16-5B13-4B97-9250-5D702FE34C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F87F66-A655-4EBB-BBE5-9407D8C086FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F87F66-A655-4EBB-BBE5-9407D8C086FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F87F66-A655-4EBB-BBE5-9407D8C086FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F87F66-A655-4EBB-BBE5-9407D8C086FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ABBD449-F6F3-4CE8-AB2E-DA126A180F66}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.n-ware.hu/tfs/reaktorlabs
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = movieDBminiproj.Tests\\movieDBminiproj.Tests.csproj
+		SccProjectName1 = movieDBminiproj.Tests
+		SccLocalPath1 = movieDBminiproj.Tests
+		SccProjectUniqueName2 = movieDBminiproj\\movieDBminiproj.csproj
+		SccProjectName2 = movieDBminiproj
+		SccLocalPath2 = movieDBminiproj
+	EndGlobalSection
+EndGlobal

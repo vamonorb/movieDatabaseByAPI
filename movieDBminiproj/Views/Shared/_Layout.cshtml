@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        <div class="container" style="max-height:50px">
+            <div class="navbar-header" style="background-image: url('../../Images/logo.svg'); background-repeat:no-repeat; background-size:contain; z-index:1000; width:120px">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (Session["userId"] != null)
+                {
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Megnézendők", "Index", "Watchlist")</li>
+                    <li>@Html.ActionLink("Láttam", "Index", "Watched")</li>
+                    <li>@Html.ActionLink("Statisztikák", "Index", "Stat")</li>
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                </ul>
+                }
+                <div class="navbar-form navbar-right">
+                    <div class="form-inline">
+                        @using (Html.BeginForm("PersonSearch", "Search", FormMethod.Post))
+                        {
+                            <select class="arrow" name="categories">
+                                <option value="person">Személy</option>
+                                <option value="movie">Filmcím</option>
+                            </select>
+                            <input class="form-control for" type="text" name="search" style=" border: 0; outline: 0; background: transparent; border-bottom: 1px solid black; border-radius: 0; box-shadow:none"  />
+                            <button type="submit" class="btn-link"> <span class="glyphicon glyphicon-search"></span></button>
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+
+        </div>
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer id="myfooter">
+            <p>&copy; @DateTime.Now.Year - MyMDB by Vámos Norbert</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

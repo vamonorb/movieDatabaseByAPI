@@ -1,0 +1,55 @@
+﻿@model movieDBminiproj.Models.PersonSearchViewModel
+@{
+    ViewBag.Title = "PersonSearch";
+}
+
+<h2 class="list-title">PersonSearch</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Kép
+        </th>
+        <th>
+            Név
+        </th>
+        <th>
+            Ismert
+        </th>
+        <th>
+            popular
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Results) {
+    <tr>
+        <td>
+            @if (item.Profile_path != null)
+            {
+                string fullPath = "https://image.tmdb.org/t/p/w500" + @Html.DisplayFor(modelItem => item.Profile_path).ToString(); 
+                <img src="@fullPath" style="width: 50px" />
+            }
+            else
+            {
+                <img src="~/Images/placeholder-hi.png" style="width: 50px" />
+            }
+        </td>
+        <td>
+            @Html.ActionLink(item.Name, "MovieByPerson", "Search", new { search = item.Id }, null)
+        </td>
+        <td>
+            @if (item.Known_for[0].Original_title != null)
+            {
+                @Html.ActionLink(item.Known_for[0].Original_title, "MovieDetails", "Search", new { search = item.Known_for[0].Id }, null)
+            }
+        </td>
+        <td>    
+            @Html.DisplayFor(modelItem => item.Popularity)
+        </td>
+     
+    </tr>
+}
+
+</table>

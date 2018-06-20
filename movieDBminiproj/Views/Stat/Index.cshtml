@@ -1,0 +1,64 @@
+﻿@model movieDBminiproj.Models.StatModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Megnézéshez szükséges idő</th>
+        <th>Filmnézéssel töltött idő</th>
+    </tr>
+    <tr>
+        <td class="list-title"><span id="watch">@Model.WatchStat </span>&nbsp;perc</td>
+        <td class="list-title"><span  id="watched">@Model.WatchedStat </span>&nbsp;perc</td>
+
+    </tr>
+</table>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="audition">Nézők száma</label>
+        <input type="text" class="form-control" id="audition" style="width:50px; margin-right:20px" >
+    </div>
+    <div class="form-group">
+        <label for="popcorn">Popcornfogyasztás (fő/liter/óra)</label>
+        <input type="text" class="form-control" id="popcorn" style="width:50px; margin-right:20px">
+    </div>
+    <div class="form-group">
+        <label for="cola">Colafogyasztás (fő/liter/óra)</label>
+        <input type="text" class="form-control" id="cola" style="width:50px; margin-right:20px">
+    </div>
+    <button type="button" class="btn btn-default" id="calc">Számol</button>
+</form>
+<div class="container stat">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-lg-3 snack">A megnézendő filmek anyagszükséglete literben</div>
+        <div class="col-lg-3 col-md-3 col-lg-3" id="popneed"><span class="count" id="popneedNum" ></span> </div>
+        <div class="col-lg-3 col-md-3 col-lg-3" id="colaneed"><span class="count" id="colaneedNum" ></span></div>
+    </div>
+</div>
+
+<script>
+   
+    $('#calc').click(function () {
+        let watchInHour = ($('#watch').text() / 60).toPrecision(2);
+        let popneed = watchInHour * $('#audition').val() * $('#popcorn').val();
+        $('#popneedNum').text(popneed);
+        let colaneed = watchInHour * $('#audition').val() * $('#cola').val();
+        $('#colaneedNum').text(colaneed);
+    })
+        .click(function () {
+            $('.count').each(function () {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                        duration: 2000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now));
+                        }
+                    });
+            })
+        });
+</script>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<movieDBminiproj.Watched>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="list-title">
+    @Html.DisplayNameFor(model => model.User.Username) filmjeim
+</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            
+        </th>
+        <th>
+            Cím
+        </th>
+        <th>
+            Kiadás dátuma
+        </th>
+        <th>
+            Játékidő
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @{string fullPath = "https://image.tmdb.org/t/p/w500" + @Html.DisplayFor(model => item.ImgPath).ToString(); }
+            <img src="@fullPath" style="width: 50px" />
+        </td>
+        <td>
+            @Html.ActionLink(item.Title, "MovieDetails", "Search", new { search = item.MovieId }, null)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Runtime)
+        </td>
+        
+    </tr>
+}
+
+</table>

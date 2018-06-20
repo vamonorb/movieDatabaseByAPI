@@ -1,0 +1,17 @@
+﻿@model IEnumerable<movieDBminiproj.Models.ResultsUp>
+
+
+<div class="carousel-inner">
+    @{
+        var i = 0;
+        foreach (var item in Model)
+        {
+            var itemClass = i++ == 0 ? "item active" : "item";
+            <div class="@itemClass" style="max-height:70px; overflow:hidden">
+                <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+            </div>
+        }
+    }
+
+</div>
+

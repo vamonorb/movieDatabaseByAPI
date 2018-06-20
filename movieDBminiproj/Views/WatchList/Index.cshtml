@@ -1,0 +1,65 @@
+﻿@model IEnumerable<movieDBminiproj.Watchlist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="list-title">Megnézendő filmjeim</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+        </th>
+        <th>
+           Cím
+        </th>
+        <th>
+            Kiadás éve
+        </th>
+        <th>
+            Játékidő
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @{string fullPath = "https://image.tmdb.org/t/p/w500" + @Html.DisplayFor(model => item.ImgPath).ToString(); }
+            <img src="@fullPath" style="width: 50px" />
+
+        </td>
+        <td>
+            @Html.ActionLink(item.Title, "MovieDetails", "Search", new { search = item.MovieId }, null)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Runtime)
+        </td>
+        <td>
+            <a href="@Url.Action("SaveToWatchedList", "Watchlist", new { id = item.MovieId}, null)" class="btn">
+
+                <span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Láttam" aria-hidden="false" style="font-size:20pt">
+                </span>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>

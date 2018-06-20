@@ -1,0 +1,52 @@
+﻿@model IEnumerable<movieDBminiproj.Models.ResultsUp>
+
+
+<div class="container">
+    <div class="row" style="padding-top:0;">
+        <div class="col-md-12">
+            <div class="carousel carousel-showsixmoveone slide" id="carousel123">
+                <div class="carousel-inner">
+                    @{
+                        var i = 0;
+                        foreach (var item in Model)
+                        {
+                            var itemClass = i++ == 0 ? "item active" : "item";
+                            <div class="@itemClass">
+                                @{string fullPath = "https://image.tmdb.org/t/p/w500" + @Html.DisplayFor(modelItem => item.Poster_path).ToString();}
+
+                                <div class="col-xs-12 col-sm-4 col-md-2" style="background-image: url(@fullPath); background-size: contain; background-repeat: no-repeat; min-height: 140px">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </div>
+                            </div>
+                        }
+                    }
+                    <a class="left carousel-control" href="#carousel123" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                    <a class="right carousel-control" href="#carousel123" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        (function () {
+            $('#carousel123').carousel({ interval: 2000 });
+            $('.carousel-showsixmoveone .item').each(function () {
+                var itemToClone = $(this);
+
+                for (var i = 1; i < 6; i++) {
+                    itemToClone = itemToClone.next();
+
+                    // wrap around if at end of item collection
+                    if (!itemToClone.length) {
+                        itemToClone = $(this).siblings(':first');
+                    }
+                    // grab item, clone, add marker class, add to collection
+                    itemToClone.children(':first-child').clone()
+                        .addClass("cloneditem-" + (i))
+                        .appendTo($(this));
+                }
+            });
+        }());
+
+    </script>}

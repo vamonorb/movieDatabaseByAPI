@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f095e63b0efd4accab590fdca4f0800b" Name="Diagram1">
+        <EntityTypeShape EntityType="MovieDBModel.FavouriteMovieList" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieDBModel.Rating" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieDBModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="MovieDBModel.FK_FavouriteMovieList_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieDBModel.FK_Rating_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MovieDBModel.Watched" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="MovieDBModel.Watchlist" Width="1.5" PointX="3" PointY="14.625" />
+        <AssociationConnector Association="MovieDBModel.FK_MovieViewedList_User1" />
+        <AssociationConnector Association="MovieDBModel.FK_MovieViewList_User1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

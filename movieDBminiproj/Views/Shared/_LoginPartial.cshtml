@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "_LoginPartial";
+}
+
+@if (Session["userId"] != null)
+{
+    using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right login">
+            <li>
+                @Html.ActionLink("Isten hozott " + Session["username"] + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Home" })
+            </li>
+            <li>
+                @Html.ActionLink("Kijelentkezés", "LogOut", "LoginView")
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right login">
+    <li>@Html.ActionLink("Bejelentkezés", "Login", "LoginView", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

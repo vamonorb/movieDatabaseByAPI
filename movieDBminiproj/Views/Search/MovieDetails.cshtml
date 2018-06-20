@@ -1,0 +1,56 @@
+﻿@model movieDBminiproj.Models.MovieDetailViewModel
+
+@{
+    ViewBag.Title = "MovieDetails";
+}
+
+<h2 class="list-title">Részletes betekintő</h2>
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @{string fullPath = "https://image.tmdb.org/t/p/w500" + @Html.DisplayFor(model => model.Poster_path).ToString(); }
+        <div class="col col-xs-12 col-lg-3 col-md-4" style="height:550px; background-image: url(@fullPath); background-repeat:no-repeat; background-size:contain">
+        </div>
+        <div class="col col-xs-12 col-md-5">
+            <div class="backtolist">
+                @Html.ActionLink("Vissza a listába", "MovieDetails", "Search")
+            </div>
+            <h3> @Html.DisplayFor(model => model.Title)</h3>
+            @Html.HiddenFor(model => model.Id)
+            <h4>Eredeti cím: @Html.DisplayFor(model => model.Original_title)</h4>
+            Megjelenés: @Html.DisplayFor(model => model.Release_date)
+            <br><br>
+            <p style="text-align:justify">@Html.DisplayFor(model => model.Overview)</p>
+            <br>
+            <strong>Játékidő: @Html.DisplayFor(model => model.Runtime) </strong>
+            @Html.HiddenFor(model => model.Runtime)
+            <div id="votes">
+                @Html.DisplayFor(model => model.Vote_average)
+            </div>
+        </div>
+        <div class="col col-md-2">
+            @if (Session["userName"] != null)
+            {
+                var style = (Model.IsExist) || (Model.IsExistWatched) ? "pointer-events:none; opacity: 0.5; color:dimgray" : "";
+                
+
+                <a href="@Url.Action("SaveToWatchList", "Watchlist", new { id = Model.Id }, null)" class="btn" style="@style" ;>
+                    <span class="glyphicon glyphicon-list-alt" data-toggle="tooltip" title="Listához adom" aria-hidden="false" style="font-size:30pt">
+                    </span>
+                </a>
+                var stylewatched = (Model.IsExistWatched) ? "pointer-events:none; opacity: 0.5; color: dimgray" : "";
+                
+                <a href="@Url.Action("SaveToWatchedList", "Watchlist", new { id = Model.Id }, null)" class="btn" style="@stylewatched">
+
+                    <span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Láttam" aria-hidden="false" style="font-size:30pt">
+                    </span>
+                </a>
+            }
+            <script>
+                $(document).ready(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
+        </div>
+    </div>
+}
